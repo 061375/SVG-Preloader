@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>SVG Pie-Timer Pre-Loader in Javascript - Multiple</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jh.pieloader.js"></script>
+    <script>
+        window.onload = function() {
+            let x = 10;
+            let ts = document.getElementsByClassName('target');
+            for(let t in ts) {
+                if (ts.hasOwnProperty(t)) { 
+                    pieLoader.init(ts[t],x);
+                    x+=10;
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="clear">
+        <ul>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>10 sec</span>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>20 sec</span>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>30 sec</span>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>40 sec</span>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>50 sec</span>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="target"></div>
+                    <span>60 sec</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div  class="clear">
+        <ol>
+            <li>
+                <a href="index.html">Single Loader</a>
+            </li>
+            <li>
+                <a href="multi.html">Multiple Loaders</a>
+            </li>
+            <li>
+                <a href="callback.html">Loader With A Callback</a>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

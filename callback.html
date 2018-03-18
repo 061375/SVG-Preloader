@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>SVG Pie-Timer Pre-Loader in Javascript - Callback</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jh.pieloader.js"></script>
+    <script>
+        window.onload = function() {
+            pieLoader.init(document.getElementById('target'),10,{},callBack,{name:'Jeremy'});
+        };
+        function callBack(args) {
+            alert('Hello '+args.name+'. The timer has finished');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="clear">
+        <div class="container">
+            <div id="target"></div>
+        </div>
+    </div>
+    <div  class="clear">
+        <ol>
+            <li>
+                <a href="index.html">Single Loader</a>
+            </li>
+            <li>
+                <a href="multi.html">Multiple Loaders</a>
+            </li>
+            <li>
+                <a href="callback.html">Loader With A Callback</a>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>
