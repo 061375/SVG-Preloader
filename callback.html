@@ -6,9 +6,27 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jh.pieloader.js"></script>
     <script>
-        window.onload = function() {
-            pieLoader.init(document.getElementById('target'),10,{},callBack,{name:'Jeremy'});
-        };
+        function runTimer() {
+            let s = parseInt(document.getElementById('howlong').value);
+            if (isNaN(s)) {
+                alert("Please select a time range from 10 - 60 seconds");
+                return false;
+            }
+            if (s < 10 || s > 60) {
+                alert("Please select a time range from 10 - 60 seconds");
+                return false;
+            }
+            
+            let n = document.getElementById('yourname').value;
+            if (n.trim() == '') {
+                alert("please enter your name");
+                return false;
+            }
+            
+            pieLoader.init(document.getElementById('target'),s,{},callBack,{name:n});
+            
+            return true;
+        }
         function callBack(args) {
             alert('Hello '+args.name+'. The timer has finished');
         }
@@ -19,6 +37,22 @@
     <div class="clear">
         <div class="container">
             <div id="target"></div>
+        </div>
+        <div class="clear">
+            <div>
+                <label for="yourname">
+                    Enter your name:
+                    <input type="text" id="yourname" maxlength="35" />
+                </label>
+                <br />
+                <label for="howlong">
+                    How long should the timer run? ( 10 - 60 seconds)
+                    <input type="text" id="howlong" />
+                </label>
+            </div>
+            <div>
+                <button type="button" onclick="window.runTimer()">Run Timer</button>
+            </div>
         </div>
     </div>
     <div  class="clear">
