@@ -15,8 +15,10 @@ var pieLoader = (function(){
     * @param {Function} optional callback
     * @param {Object} callback parameters
     * */
-   var init = function($t,t,style,callback,params) {
+   var init = function($t,t,style,callback,params,cloop) {
        
+       if(undefined === cloop)cloop = false;
+
        let w = $t.offsetWidth,
            h = $t.offsetHeight,
        // @param {Object} the default style
@@ -58,11 +60,23 @@ var pieLoader = (function(){
            
            // increment degrees
            degs++;
-           if (typeof callback === 'function') {
+           if (typeof callback === 'function' || typeof callback === 'object') {
                if (degs > 360) {
                   // after T if a callback is set then kill the loop and run the callback
-                  clearInterval(int);
-                  callback(params);
+                  if(!cloop) {
+                    clearInterval(int);
+                  }else{
+                    degs-=360;
+                  }
+                  if(typeof callback === 'function') {
+                    callback(params);
+                  }else{
+                    let l = callback.length;
+                    for(let i=0; i<l; i++) {
+                        if(typeof callback[i] === 'function')
+                          callback[i](params);
+                    }
+                  }
                }
            }else{
                // reset after 360 degrees or T
